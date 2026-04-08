@@ -12,6 +12,7 @@ import {
   Clock,
   CheckCircle2,
   Loader2,
+  MapPin,
 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -234,7 +235,7 @@ export default function PatientHome() {
       {/* Quick Actions */}
       <div>
         <h3 className="text-lg font-bold text-slate-800 mb-4">Quick Actions</h3>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card className="border border-slate-100 bg-white shadow-md shadow-slate-100 transition-all hover:shadow-lg hover:shadow-violet-100 hover:-translate-y-1 hover:border-violet-200">
             <CardContent className="flex flex-col items-center gap-3 p-6 text-center">
               <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-100">
@@ -268,6 +269,18 @@ export default function PatientHome() {
               <p className="text-sm text-slate-500">Check the status of your current orders</p>
               <Button asChild size="sm" variant="outline" className="mt-2 font-semibold border-sky-300 text-sky-600 hover:bg-sky-50">
                 <Link href="/patient/orders">View Orders</Link>
+              </Button>
+            </CardContent>
+          </Card>
+          <Card className="border border-slate-100 bg-white shadow-md shadow-slate-100 transition-all hover:shadow-lg hover:shadow-rose-100 hover:-translate-y-1 hover:border-rose-200">
+            <CardContent className="flex flex-col items-center gap-3 p-6 text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-rose-100">
+                <MapPin className="h-7 w-7 text-rose-500" />
+              </div>
+              <h3 className="font-bold text-slate-800">Nearby Shops</h3>
+              <p className="text-sm text-slate-500">Find medical shops within 3 km</p>
+              <Button asChild size="sm" variant="outline" className="mt-2 font-semibold border-rose-300 text-rose-600 hover:bg-rose-50">
+                <Link href="/patient/nearby-shops">Find Shops</Link>
               </Button>
             </CardContent>
           </Card>

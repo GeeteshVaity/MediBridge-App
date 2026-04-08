@@ -69,6 +69,7 @@ export default function LocationPage() {
       ...prev,
       lat,
       lng,
+      shopAddress: `Location: ${lat.toFixed(6)}, ${lng.toFixed(6)}`,
     }))
     setHasLocation(true)
   }
@@ -87,6 +88,7 @@ export default function LocationPage() {
           ...prev,
           lat: latitude,
           lng: longitude,
+          shopAddress: `Location: ${latitude.toFixed(6)}, ${longitude.toFixed(6)}`,
         }))
         setHasLocation(true)
         setGettingLocation(false)
@@ -203,7 +205,7 @@ export default function LocationPage() {
           <CardHeader>
             <CardTitle>Shop Details</CardTitle>
             <CardDescription>
-              Additional information about your shop
+              Address is auto-filled from your map selection
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -214,12 +216,14 @@ export default function LocationPage() {
               </Label>
               <Input
                 id="shopAddress"
-                placeholder="Enter complete shop address"
+                placeholder="Select location on map"
                 value={locationData.shopAddress}
-                onChange={(e) =>
-                  setLocationData((prev) => ({ ...prev, shopAddress: e.target.value }))
-                }
+                disabled
+                className="bg-gray-100 cursor-not-allowed"
               />
+              <p className="text-xs text-muted-foreground">
+                Automatically set based on your map selection (read-only)
+              </p>
             </div>
 
             <div className="space-y-2">

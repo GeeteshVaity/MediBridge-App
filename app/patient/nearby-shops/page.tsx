@@ -24,7 +24,7 @@ interface NearbyShop {
   } | null
 }
 
-export default function StoresPage() {
+export default function NearbyShopsPage() {
   const [shops, setShops] = useState<NearbyShop[]>([])
   const [loading, setLoading] = useState(false)
   const [gettingLocation, setGettingLocation] = useState(false)
@@ -311,7 +311,7 @@ export default function StoresPage() {
               <div className="text-center py-8">
                 <AlertCircle className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
                 <p className="text-sm text-muted-foreground">
-                  No shops found within {searchRadius} km
+                  No shops found within 3 km
                 </p>
               </div>
             ) : (
@@ -346,5 +346,3 @@ export default function StoresPage() {
     </div>
   )
 }
-
-
