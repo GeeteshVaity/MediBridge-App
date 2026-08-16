@@ -1,0 +1,21 @@
+{
+    "name": "medibridge-backend",
+    "version": "1.0.0",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "tsx src/server.js",
+        "dev": "npx tsx src/server.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^3.0.3",
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.4",
+        "express": "^4.21.2",
+        "jsonwebtoken": "^9.0.3",
+        "mongoose": "^9.2.1"
+    },
+    "devDependencies": {
+        "tsx": "^4.23.12",
+        "typescript": "5.7.3"
+    }
+}

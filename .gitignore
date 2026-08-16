@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # v0 runtime files (should only exist in preview, not in git)
 __v0_runtime_loader.js
 __v0_devtools.tsx
@@ -10,6 +9,3 @@ node_modules/
 .env
 .env*.local
 .DS_Store
-=======
-.env
->>>>>>> 178f8b6b02cd51022b75aff81b7f32e103371505
