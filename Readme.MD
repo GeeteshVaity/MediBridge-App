@@ -246,12 +246,3 @@ This project is licensed under the MIT License unless otherwise specified.
 ## Conclusion
 
 MediBridge is a practical healthcare marketplace application built with a modern MERN-style architecture, combining patient and shopkeeper workflows, medicine ordering, prescription handling, and local shop discovery in one system.
-```
-
-If you want, I can also give you:
-1. a shorter, cleaner README version for GitHub
-2. a more professional production-level README
-3. a version with project screenshots and architecture diagramIf you want, I can also give you:
-1. a shorter, cleaner README version for GitHub
-2. a more professional production-level README
-3. a version with project screenshots and architecture diagram
