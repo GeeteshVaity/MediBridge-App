@@ -18,6 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useAuth } from "@/contexts/AuthContext"
+import { authFetch } from "@/services/api"
 
 interface Stat {
   label: string
@@ -80,7 +81,7 @@ export default function PatientHome() {
         return
       }
       try {
-        const response = await fetch(`/api/patient/dashboard?patientId=${user.id}`)
+        const response = await authFetch(`/api/patient/dashboard?patientId=${user.id}`)
         if (!response.ok) throw new Error('Failed to fetch dashboard')
         const data = await response.json()
         

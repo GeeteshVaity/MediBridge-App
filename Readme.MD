@@ -91,11 +91,30 @@ JWT_SECRET=your-super-secret-jwt-key-change-in-production
 PORT=5000
 ```
 
-For the frontend, you may also need environment variables if your app is configured for custom API endpoints:
+For the frontend, configure where the API lives (see `.env.example`):
 
 ```env
+# Base URL of the backend API. If unset, the frontend calls a relative /api
+# path that Next.js proxies to the backend (useful to avoid CORS and to keep
+# one origin in production).
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
+
+# Backend origin for the Next.js /api rewrite (no trailing /api).
+# Required in production when the backend is not at localhost:5000, e.g.:
+# BACKEND_URL=https://your-backend.example.com
+BACKEND_URL=
 ```
+
+---
+
+## Deployment
+
+The frontend must never be pointed at `localhost:5000` in a deployed environment — that host only exists on your dev machine. To make data fetching work after deployment:
+
+1. Deploy the Express backend (Render, Railway, Fly.io, a VPS, etc.) and note its public URL, e.g. `https://medibridge-api.onrender.com`.
+2. In your frontend hosting (Vercel, etc.), set `BACKEND_URL=https://medibridge-api.onrender.com` so the Next.js `/api` rewrite proxies API calls to it.
+3. Optionally set `NEXT_PUBLIC_API_URL=https://medibridge-api.onrender.com/api` to have the browser call the backend directly instead of through the proxy.
+4. The backend already enables CORS (`origin: true`), so either approach works.
 
 ---
 

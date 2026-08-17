@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
+    // Relative /api goes through the Next.js rewrite (see next.config.mjs), which
+    // points at the deployed backend via BACKEND_URL / NEXT_PUBLIC_API_URL.
+    baseURL: process.env.NEXT_PUBLIC_API_URL || '/api',
     headers: {
         'Content-Type': 'application/json',
     },

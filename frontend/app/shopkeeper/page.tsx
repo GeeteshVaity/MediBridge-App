@@ -7,9 +7,7 @@ import {
   ClipboardList,
   AlertTriangle,
   TrendingUp,
-  Bell,
   FileText,
-  ShoppingBag,
   Loader2,
 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -71,7 +69,10 @@ export default function ShopkeeperHome() {
         return
       }
       try {
-        const response = await authFetch(`/api/shop/dashboard?shopId=${user.id}`)
+        // Relative /api goes through the Next.js rewrite (see next.config.mjs)
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api"
+        const response = await authFetch(`${API_BASE}/shop/dashboard?shopId=${user.id}`)
+        
         if (!response.ok) throw new Error('Failed to fetch dashboard')
         const data = await response.json()
         
@@ -273,5 +274,3 @@ export default function ShopkeeperHome() {
     </div>
   )
 }
-
-

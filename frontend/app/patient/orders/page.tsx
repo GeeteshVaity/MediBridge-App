@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { useAuth } from "@/contexts/AuthContext"
+import { authFetch } from "@/services/api"
 
 interface OrderItem {
   name: string
@@ -97,7 +98,7 @@ export default function OrdersPage() {
         return
       }
       try {
-        const response = await fetch(`/api/patient/orders?patientId=${user.id}`)
+        const response = await authFetch(`/api/patient/orders?patientId=${user.id}`)
         if (!response.ok) throw new Error('Failed to fetch orders')
         const data = await response.json()
         const transformedOrders = data.orders.map((order: any) => ({
