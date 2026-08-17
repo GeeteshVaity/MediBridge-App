@@ -100,6 +100,12 @@ export default function PrescriptionPage() {
   }
 
   function processFile(file: File) {
+    // Base64 adds ~33% overhead and MongoDB documents cap at 16mb, so reject
+    // files over 8mb before trying to upload them.
+    if (file.size > 8 * 1024 * 1024) {
+      alert('File is too large. Please upload an image or PDF under 8MB.')
+      return
+    }
     setUploaded(file.name)
     const reader = new FileReader()
     reader.onloadend = () => {

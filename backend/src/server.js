@@ -9,8 +9,12 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Prescriptions are uploaded as base64 data URLs in JSON bodies, so the
+// default 100kb express.json() limit would reject most images/PDFs with a 413.
+// 15mb keeps payloads under MongoDB's 16mb document limit (~11mb binary after
+// base64 overhead).
+app.use(express.json({ limit: '15mb' }));
+app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 
 // Routes
 const authRoutes = require('./routes/authRoutes');
